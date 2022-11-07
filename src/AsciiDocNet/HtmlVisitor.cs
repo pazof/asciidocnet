@@ -2,15 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using AsciiDocNet.Attributes;
+using AsciiDocNet.Lists;
 
 namespace AsciiDocNet
 {
-    /// <summary>
-    /// Visits a <see cref="Document" /> and writes to HTML
-    /// </summary>
-    /// <seealso cref="AsciiDocNet.IDocumentVisitor" />
-    /// <seealso cref="System.IDisposable" />
-    public class HtmlVisitor : IDocumentVisitor, IDisposable
+	/// <summary>
+	/// Visits a <see cref="Document" /> and writes to HTML
+	/// </summary>
+	/// <seealso cref="AsciiDocNet.IDocumentVisitor" />
+	/// <seealso cref="System.IDisposable" />
+	public class HtmlVisitor : IDocumentVisitor, IDisposable
     {
         // keep the collection of attribute entries as we see them in the document
         private readonly Dictionary<string, AttributeEntry> _attributeEntries = new Dictionary<string, AttributeEntry>();

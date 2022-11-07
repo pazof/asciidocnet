@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using AsciiDocNet.Lists;
 
 namespace AsciiDocNet
 {
-    public class CheckListParser : ProcessBufferParserBase
+	public class CheckListParser : ProcessBufferParserBase
     {
         public override bool IsMatch(IDocumentReader reader, Container container, AttributeList attributes) =>
             PatternMatcher.CheckListItem.IsMatch(reader.Line);

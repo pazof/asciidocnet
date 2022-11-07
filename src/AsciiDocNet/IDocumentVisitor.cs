@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using AsciiDocNet.Attributes;
+using AsciiDocNet.Lists;
 
 namespace AsciiDocNet
 {
-    /// <summary>
-    /// Visits elements of an AsciiDoc
-    /// </summary>
-    public interface IDocumentVisitor
+	/// <summary>
+	/// Visits elements of an AsciiDoc
+	/// </summary>
+	public interface IDocumentVisitor
     {
         /// <summary>
         /// Visits the admonition.

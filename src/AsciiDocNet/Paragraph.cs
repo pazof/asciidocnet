@@ -21,7 +21,7 @@ namespace AsciiDocNet
         /// <summary>
         /// Initializes a new instance of the <see cref="Paragraph"/> class.
         /// </summary>
-        /// <param name="elements">The elements.</param>
+        /// <param name="elements">The elements. Collection will be copied.</param>
         /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentException">must have at least one element</exception>
         public Paragraph(IList<IInlineElement> elements)
@@ -37,6 +37,11 @@ namespace AsciiDocNet
 
 			Elements = elements.ToList();
 		}
+
+        public Paragraph(IEnumerable<IInlineElement> elements) : this (elements?.ToList())
+        {
+	        
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Paragraph"/> class.

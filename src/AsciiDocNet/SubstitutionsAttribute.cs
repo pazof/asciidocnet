@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
+using AsciiDocNet.Attributes;
 
 namespace AsciiDocNet
 {
-    // TODO: handle this better...
-    /// <summary>
-    /// Controls the substitutions that can be made for a block.
-    /// </summary>
-    /// <seealso cref="AsciiDocNet.NamedAttribute" />
-    public class SubstitutionsAttribute : NamedAttribute
+	// TODO: handle this better...
+	/// <summary>
+	/// Controls the substitutions that can be made for a block.
+	/// </summary>
+	/// <seealso cref="Attributes.NamedAttribute" />
+	public class SubstitutionsAttribute : NamedAttribute
 	{
         /// <summary>
         /// Initializes a new instance of the <see cref="SubstitutionsAttribute"/> class.
