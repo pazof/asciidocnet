@@ -118,6 +118,8 @@ namespace AsciiDocNet
         /// <param name="item">The element to add</param>
         public void Add(IElement item)
 		{
+			ArgumentNullException.ThrowIfNull(item);
+
 			if (Elements == null)
 			{
 				Elements = new List<IElement>();

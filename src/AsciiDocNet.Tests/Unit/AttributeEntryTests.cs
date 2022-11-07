@@ -1,3 +1,4 @@
+using AsciiDocNet.Attributes;
 using Xunit;
 
 namespace AsciiDocNet.Tests.Unit

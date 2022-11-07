@@ -1,4 +1,5 @@
 using System.Linq;
+using AsciiDocNet.Lists;
 using Xunit;
 
 namespace AsciiDocNet.Tests.Unit

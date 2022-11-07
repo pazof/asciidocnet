@@ -1,33 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using AsciiDocNet.Attributes;
 
 namespace AsciiDocNet
 {
-    /// <summary>
-    /// Specifies the roles for an element.
-    /// </summary>
-    /// <example>
-    /// [.summary]
-    /// * Review 1
-    /// * Review 2
-    /// </example>    
-    /// <example>
-    /// [role="summary"]
-    /// * Review 1
-    /// * Review 2
-    /// </example>    
-    /// <example>
-    /// [.summary.main]
-    /// * Review 1
-    /// * Review 2
-    /// </example>    
-    /// <example>
-    /// [role="summary,main"]
-    /// * Review 1
-    /// * Review 2
-    /// </example>
-    /// <seealso cref="AsciiDocNet.NamedAttribute" />
-    public class RoleAttribute : NamedAttribute
+	/// <summary>
+	/// Specifies the roles for an element.
+	/// </summary>
+	/// <example>
+	/// [.summary]
+	/// * Review 1
+	/// * Review 2
+	/// </example>    
+	/// <example>
+	/// [role="summary"]
+	/// * Review 1
+	/// * Review 2
+	/// </example>    
+	/// <example>
+	/// [.summary.main]
+	/// * Review 1
+	/// * Review 2
+	/// </example>    
+	/// <example>
+	/// [role="summary,main"]
+	/// * Review 1
+	/// * Review 2
+	/// </example>
+	/// <seealso cref="Attributes.NamedAttribute" />
+	public class RoleAttribute : NamedAttribute
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RoleAttribute"/> class.

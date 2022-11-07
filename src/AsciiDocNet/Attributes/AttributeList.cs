@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AsciiDocNet.Attributes;
 
 namespace AsciiDocNet
 {
-    /// <summary>
-    /// A collection of <see cref="Attribute" />s applied to an <see cref="IElement" />
-    /// </summary>
-    public class AttributeList : IList<Attribute>
+	/// <summary>
+	/// A collection of <see cref="Attribute" />s applied to an <see cref="IElement" />
+	/// </summary>
+	public class AttributeList : IList<Attribute>
 	{
 		private List<Attribute> _attributes;
 		private bool _isDiscrete;
