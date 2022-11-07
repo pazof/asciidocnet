@@ -332,5 +332,11 @@ namespace AsciiDocNet
         /// </summary>
         /// <param name="superscript">The superscript.</param>
         void VisitSuperscript(Superscript superscript);
+
+        /// <summary>
+        /// Visits the keyboard macro.
+        /// </summary>
+        /// <param name="keyboardMacro">The keys.</param>
+        void VisitKeyboardMacro(KeyboardMacro keyboardMacro);
     }
 }

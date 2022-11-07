@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using AsciiDocNet.Attributes;
 
 namespace AsciiDocNet
 {
@@ -298,6 +300,10 @@ namespace AsciiDocNet
                     {
                         switch (currentRule.ElementType)
                         {
+                                case InlineElementType.KeyboardMacro:
+                                var macro = CreateInlineElement<KeyboardMacro>(match, currentRule.Constraint);
+                                outerMatches.Add(macro);
+                                break;
                             case InlineElementType.Emphasis:
                             case InlineElementType.EmphasisDouble:
                                 var emphasis = CreateInlineElement<Emphasis>(match, currentRule.Constraint);

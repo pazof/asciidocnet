@@ -63,6 +63,8 @@ namespace AsciiDocNet
 
 		public static readonly Regex Include = new Regex(@"^\\?include::(?<path>[^\[]+)\[(?<attributes>.*?)\]$");
 
+		public static readonly Regex KeyboardMacro = new Regex(@"\\?kbd:\[(?<keys>([\S \t^\]])* )\]");
+
 		public static readonly Regex InlineAnchor =
 			new Regex(
 				$@"\\?(?:\[\[([{Patterns.CharacterClassAlpha}:_][{Patterns.CharacterClassWord}:.-]*)(?:,{Patterns.CharacterGroupWhitespace}*(\S.*?))?\]\]|anchor:(\S+)\[(.*?[^\\])?\])");
@@ -126,6 +128,7 @@ namespace AsciiDocNet
 			new InlineElementRule(InlineElementType.Superscript, Superscript, InlineElementConstraint.Unconstrained),
 			new InlineElementRule(InlineElementType.Subscript, Subscript, InlineElementConstraint.Unconstrained),
 			new InlineElementRule(InlineElementType.AttributeReference, AttributeReference, InlineElementConstraint.Unconstrained),
+			new InlineElementRule(InlineElementType.KeyboardMacro, KeyboardMacro, InlineElementConstraint.Constrained)
 		};
 
 		public static readonly Regex InlineImage = new Regex(@"\\?(?:image|icon):([^:\[][^\[]*)\[((?:\\\]|[^\]])*?)\]");

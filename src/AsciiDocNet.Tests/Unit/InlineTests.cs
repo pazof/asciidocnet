@@ -12,5 +12,21 @@ namespace AsciiDocNet.Tests.Unit
 			var document = Document.Parse(input);
 
 		}
+
+		[Theory]
+		[InlineData("kbd:[F11]")]
+		[InlineData("kbd:[Ctrl+T]")]
+		[InlineData("kbd:[Ctrl+Shift+N]")]
+		[InlineData("kbd:[\\]")]
+		[InlineData("kbd:[Ctrl+\\]]")]
+		[InlineData("kbd:[Ctrl + +]")]
+		public void ParsingKeyboardMacro(string input)
+		{
+			var document = Document.Parse(input)[0] as Paragraph;
+			var element = document[0] as IText;
+
+			Assert.Equal(input, element.Text);
+
+		}
 	}
 }

@@ -541,6 +541,14 @@ namespace AsciiDocNet
         }
 
         /// <summary>
+        /// Visits the keyboard macro.
+        /// </summary>
+        /// <param name="keyboardMacro">The keys.</param>
+        public void VisitKeyboardMacro(KeyboardMacro keyboardMacro)
+        {
+        }
+
+        /// <summary>
         /// Visits the attributable.
         /// </summary>
         /// <param name="attributable">The attributable.</param>
