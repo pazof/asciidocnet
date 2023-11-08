@@ -14,7 +14,7 @@ namespace AsciiDocNet
         /// <summary>
         /// Initializes a new instance of the <see cref="Document"/> class.
         /// </summary>
-        public Document() : this(null)
+        public Document(bool addDocdirAttribute = true) : this(null, addDocdirAttribute)
 		{
 		}
 
@@ -22,18 +22,20 @@ namespace AsciiDocNet
         /// Initializes a new instance of the <see cref="Document"/> class.
         /// </summary>
         /// <param name="source">The source path of the document</param>
-        public Document(string source)
-		{
-			if (!string.IsNullOrEmpty(source))
-			{
-				var directory = new FileInfo(source).Directory.FullName;
-				Attributes.Add(new AttributeEntry("docdir", directory));
-			}
-			else
-			{
-				Attributes.Add(new AttributeEntry("docdir", Directory.GetCurrentDirectory()));
-			}
-		}
+        public Document(string source, bool addDocdirAttribute = true)
+        {
+	        if (!addDocdirAttribute) return;
+
+	        if (!string.IsNullOrEmpty(source))
+	        {
+		        var directory = new FileInfo(source).Directory.FullName;
+		        Attributes.Add(new AttributeEntry("docdir", directory));
+	        }
+	        else
+	        {
+		        Attributes.Add(new AttributeEntry("docdir", Directory.GetCurrentDirectory()));
+	        }
+        }
 
         /// <summary>
         /// Gets the attributes.
