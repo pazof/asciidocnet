@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -56,7 +56,8 @@ namespace AsciiDocNet.Tests.Unit
 			    if (!Directory.Exists(RelativePathDocs))
 			        Directory.CreateDirectory(RelativePathDocs);
 
-			    var testFiles = Directory.EnumerateFiles(RelativePathDocs, "*.asciidoc", SearchOption.AllDirectories);
+			    var testFiles = Directory.EnumerateFiles(RelativePathDocs, "*.asciidoc", SearchOption.AllDirectories)
+				    .Concat(Directory.EnumerateFiles(RelativePathDocs, "*.adoc", SearchOption.AllDirectories)).ToList();
 
 				if (!testFiles.Any() || FetchFiles)
 				{
@@ -100,16 +101,16 @@ namespace AsciiDocNet.Tests.Unit
 
             var dom = CQ.Create(html);
 
-            var documents = dom["td.content .js-navigation-open"]
+            var documents = dom[".js-navigation-open"]
                 .Select(s => s.InnerText)
                 .Where(s => !string.IsNullOrEmpty(s) && s.EndsWith(".asciidoc"))
                 .ToList();
 
             documents.ForEach(s => WriteAsciiDoc(htmlDocument, s));
 
-            var directories = dom["td.content .js-navigation-open"]
+            var directories = dom[".js-navigation-open"]
                 .Select(s => s.InnerText)
-                .Where(s => !string.IsNullOrWhiteSpace(s) && !Path.HasExtension(s))
+                .Where(s => !string.IsNullOrWhiteSpace(s) && !Path.HasExtension(s) && !s.Contains("↵"))
                 .ToList();
 
             directories.ForEach(directory =>
