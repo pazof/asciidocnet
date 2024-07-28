@@ -1,9 +1,11 @@
-﻿namespace AsciiDocNet
+﻿using AsciiDocNet.Lists;
+
+namespace AsciiDocNet
 {
-    /// <summary>
-    /// The number style for an <see cref="OrderedListItem"/>
-    /// </summary>
-    public enum NumberStyle
+	/// <summary>
+	/// The number style for an <see cref="OrderedListItem"/>
+	/// </summary>
+	public enum NumberStyle
     {
         /// <summary>
         /// Arabic

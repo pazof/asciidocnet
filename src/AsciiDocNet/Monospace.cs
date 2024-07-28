@@ -3,13 +3,14 @@ using System.Linq;
 
 namespace AsciiDocNet
 {
-    /// <summary>
-    /// A monospace element.
-    /// </summary>
-    /// <seealso cref="AsciiDocNet.InlineContainer" />
-    /// <seealso cref="AsciiDocNet.IInlineElement" />
-    /// <seealso cref="AsciiDocNet.IAttributable" />
-    public class Monospace : InlineContainer, IInlineElement, IAttributable
+	/// <summary>
+	/// A monospace element. Might be used to represent terminal output/input, code and similar.
+	/// More information <see href="https://docs.asciidoctor.org/asciidoc/latest/text/monospace/">in documentation about monospace element</see>.
+	/// </summary>
+	/// <seealso cref="AsciiDocNet.InlineContainer" />
+	/// <seealso cref="AsciiDocNet.IInlineElement" />
+	/// <seealso cref="AsciiDocNet.IAttributable" />
+	public class Monospace : InlineContainer, IInlineElement, IAttributable
 	{
         /// <summary>
         /// Initializes a new instance of the <see cref="Monospace"/> class.

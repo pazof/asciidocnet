@@ -2,13 +2,14 @@ using System.Linq;
 
 namespace AsciiDocNet
 {
-    /// <summary>
-    /// A mark element.
-    /// </summary>
-    /// <seealso cref="AsciiDocNet.InlineContainer" />
-    /// <seealso cref="AsciiDocNet.IInlineElement" />
-    /// <seealso cref="AsciiDocNet.IAttributable" />
-    public class Mark : InlineContainer, IInlineElement, IAttributable
+	/// <summary>
+	/// It is a highlight element (when it is without a role). It works as the mark element in HTML.
+	/// More information in <see href="https://docs.asciidoctor.org/asciidoc/latest/text/highlight/">documentation about Highlight syntax</see>
+	/// </summary>
+	/// <seealso cref="AsciiDocNet.InlineContainer" />
+	/// <seealso cref="AsciiDocNet.IInlineElement" />
+	/// <seealso cref="AsciiDocNet.IAttributable" />
+	public class Mark : InlineContainer, IInlineElement, IAttributable
 	{
         /// <summary>
         /// Initializes a new instance of the <see cref="Mark"/> class.

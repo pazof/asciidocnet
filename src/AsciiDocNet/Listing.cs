@@ -3,22 +3,32 @@ using System.Linq;
 
 namespace AsciiDocNet
 {
-    /// <summary>
-    /// A listing element. Used for source code or keyboard input that should be displayed as entered
-    /// </summary>
-    /// <example>
-    /// ----
-    /// A listing
-    /// ----
-    /// </example>
-    /// <example>
-    /// [listing]
-    /// A listing
-    /// </example>
-    /// <seealso cref="AsciiDocNet.IElement" />
-    /// <seealso cref="AsciiDocNet.IText" />
-    /// <seealso cref="AsciiDocNet.IAttributable" />
-    public class Listing : IElement, IText, IAttributable
+	/// <summary>
+	/// A listing element. Used for source code or keyboard input that should be displayed as entered.
+	/// This block allows also to use syntax highlighting.
+	/// </summary>
+	/// <example>
+	/// ----
+	/// A listing
+	/// ----
+	/// </example>
+	/// <example>
+	/// [listing]
+	/// A listing
+	/// </example>
+	/// 
+	/// <example>
+	/// To add highlighting add attributes.
+	///		<code>
+	///			var listing = new Listing("var c = new Date();");
+	///			listing.Attributes.Add(new AsciiDocNet.Attribute("source"));
+	///			listing.Attributes.Add(new AsciiDocNet.Attribute("csharp"));
+	///		</code>
+	/// </example>
+	/// <seealso cref="AsciiDocNet.IElement" />
+	/// <seealso cref="AsciiDocNet.IText" />
+	/// <seealso cref="AsciiDocNet.IAttributable" />
+	public class Listing : IElement, IText, IAttributable
 	{
         /// <summary>
         /// Initializes a new instance of the <see cref="Listing"/> class.

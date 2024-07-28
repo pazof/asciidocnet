@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using AsciiDocNet.Attributes;
+using AsciiDocNet.Lists;
 
 namespace AsciiDocNet
 {
-    /// <summary>
-    /// Visits a <see cref="Document" /> and writes out an AsciiDoc to
-    /// a file / text writer.
-    /// </summary>
-    /// <seealso cref="AsciiDocNet.IDocumentVisitor" />
-    /// <seealso cref="System.IDisposable" />
-    public class AsciiDocVisitor : IDocumentVisitor, IDisposable
+	/// <summary>
+	/// Visits a <see cref="Document" /> and writes out an AsciiDoc to
+	/// a file / text writer.
+	/// </summary>
+	/// <seealso cref="AsciiDocNet.IDocumentVisitor" />
+	/// <seealso cref="System.IDisposable" />
+	public class AsciiDocVisitor : IDocumentVisitor, IDisposable
 	{
 		private readonly TextWriter _writer;
 		private bool _disposed;

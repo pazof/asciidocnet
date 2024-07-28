@@ -1,16 +1,18 @@
 using System.Collections.Generic;
+using AsciiDocNet.Attributes;
+using AsciiDocNet.Lists;
 
 namespace AsciiDocNet
 {
-    /// <summary>
-    /// A base visitor from which to derive visitors to
-    /// visit AsciiDoc documents
-    /// </summary>
-    /// <remarks>
-    /// Override only the visit methods for elements to visit.
-    /// </remarks>
-    /// <seealso cref="AsciiDocNet.IDocumentVisitor" />
-    public abstract class NoopVisitor : IDocumentVisitor
+	/// <summary>
+	/// A base visitor from which to derive visitors to
+	/// visit AsciiDoc documents
+	/// </summary>
+	/// <remarks>
+	/// Override only the visit methods for elements to visit.
+	/// </remarks>
+	/// <seealso cref="AsciiDocNet.IDocumentVisitor" />
+	public abstract class NoopVisitor : IDocumentVisitor
     {
         /// <summary>
         /// Visits the admonition.
