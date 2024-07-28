@@ -665,6 +665,15 @@ namespace AsciiDocNet
         }
 
         /// <summary>
+        /// Visits the keyboard macro.
+        /// </summary>
+        /// <param name="keyboardMacro">The keys.</param>
+        public void VisitKeyboardMacro(KeyboardMacro keyboardMacro)
+        {
+             throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         public void Dispose()

@@ -927,6 +927,15 @@ namespace AsciiDocNet
 			_writer.Write("^{0}^", superscript.Text);
 		}
 
+		/// <summary>
+		/// Visits the keybard macro
+		/// </summary>
+		/// <param name="keyboardMacro"></param>
+        public void VisitKeyboardMacro(KeyboardMacro keyboardMacro)
+        {
+	        _writer.Write($"kbd:[{keyboardMacro.Text}]");
+        }
+
         /// <summary>
         /// Releases unmanaged and - optionally - managed resources.
         /// </summary>
@@ -950,7 +959,9 @@ namespace AsciiDocNet
         private void VisitMedia(Media media, string name)
 		{
 		    if (media == null) return;
+
 		    VisitAttributeList(media.Attributes);
+
 			var attributes = new StringBuilder();
 			if (!string.IsNullOrEmpty(media.AlternateText))
 			{
@@ -965,6 +976,7 @@ namespace AsciiDocNet
 					attributes.Append(media.Height + ",");
 				}
 			}
+
 			if (!string.IsNullOrEmpty(media.Title))
 			{
 				attributes.Append($"title=\"{media.Title}\",");

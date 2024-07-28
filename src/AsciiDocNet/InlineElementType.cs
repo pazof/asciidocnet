@@ -77,8 +77,12 @@ namespace AsciiDocNet
         /// </summary>
         ImplicitLink = 1 << 16,
         /// <summary>
+        /// Macro keyboard
+        /// </summary>
+        KeyboardMacro = 1 << 17,
+        /// <summary>
         /// All elements
         /// </summary>
-        All = Literal | Emphasis | EmphasisDouble | Strong | StrongDouble | Monospace | MonospaceDouble | Subscript | Superscript | Quotation | QuotationDouble | Mark | MarkDouble | InternalAnchor | InlineAnchor | AttributeReference | ImplicitLink
+        All = Literal | Emphasis | EmphasisDouble | Strong | StrongDouble | Monospace | MonospaceDouble | Subscript | Superscript | Quotation | QuotationDouble | Mark | MarkDouble | InternalAnchor | InlineAnchor | AttributeReference | ImplicitLink | KeyboardMacro
     }
 }

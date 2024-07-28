@@ -2,16 +2,16 @@ using System.Linq;
 
 namespace AsciiDocNet
 {
-    /// <summary>
-    /// A strong element
-    /// </summary>
-    /// <example>
-    /// *word*
-    /// </example>
-    /// <seealso cref="AsciiDocNet.InlineContainer" />
-    /// <seealso cref="AsciiDocNet.IInlineElement" />
-    /// <seealso cref="AsciiDocNet.IAttributable" />
-    public class Strong : InlineContainer, IInlineElement, IAttributable
+	/// <summary>
+	/// A strong element. See more in <see cref="https://docs.asciidoctor.org/asciidoc/latest/text/bold/">documentation about bold text</see>
+	/// </summary>
+	/// <example>
+	/// *word*
+	/// </example>
+	/// <seealso cref="AsciiDocNet.InlineContainer" />
+	/// <seealso cref="AsciiDocNet.IInlineElement" />
+	/// <seealso cref="AsciiDocNet.IAttributable" />
+	public class Strong : InlineContainer, IInlineElement, IAttributable
 	{
         /// <summary>
         /// Initializes a new instance of the <see cref="Strong"/> class.

@@ -1,34 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <DoSourceLink>false</DoSourceLink>
-    <DebugType Condition="'$(Configuration)'=='Debug'">full</DebugType>
-    <SourceLink Condition="'$(DoSourceLink)'=='true'">$(BaseIntermediateOutputPath)\sl-$(MsBuildProjectName)-$(TargetFramework).json</SourceLink>
-	<CurrentVersion>1.0.0</CurrentVersion>
-	<CurrentAssemblyVersion>1.0.0</CurrentAssemblyVersion>
-	<CurrentAssemblyFileVersion>1.0.0</CurrentAssemblyFileVersion>
-	<Version>$(CurrentVersion)</Version>
-	<InformationalVersion>$(CurrentVersion)</InformationalVersion>
-	<AssemblyVersion>$(CurrentAssemblyVersion)</AssemblyVersion>
-	<FileVersion>$(CurrentAssemblyFileVersion)</FileVersion>
-	<RepoUri>https://raw.githubusercontent.com/russcam/asciidocnet</RepoUri>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
   </PropertyGroup>
-  <PropertyGroup>
-    <DocumentationFile>bin\$(Configuration)\AsciiDocNet.xml</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
   </ItemGroup>
-  <Target Name="GenerateSourceLink" BeforeTargets="CoreCompile" Condition="'$(DoSourceLink)'=='true'">
-    <Delete Files="$(SourceLink)" Condition="Exists('$(SourceLink)')" />
-    <Exec Command="git rev-parse HEAD" ConsoleToMSBuild="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="LatestCommit" />
-    </Exec>
-    <Exec Command="git rev-parse --show-toplevel" ConsoleToMSBuild="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="GitRootFolder" />
-    </Exec>
-    <WriteLinesToFile File="$(SourceLink)" Lines="{&quot;documents&quot;: { &quot;$([System.IO.Path]::GetFullPath('$(GitRootFolder)/').Replace('\','\\'))*&quot; : &quot;$(RepoUri)/$(LatestCommit)/*&quot; }}" />
-  </Target>
-  <Import Project="..\outputpath.props" />
+  
 </Project>
