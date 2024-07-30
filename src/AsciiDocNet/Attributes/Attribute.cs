@@ -13,7 +13,7 @@ namespace AsciiDocNet
         /// <param name="name">The name.</param>
         /// <param name="skipCheck">if set to <c>true</c> [skip check].</param>
         /// <exception cref="System.ArgumentException"></exception>
-        internal Attribute(string name, bool skipCheck)
+        public Attribute(string name, bool skipCheck)
 		{
 		    if (!skipCheck && !IsValidName(name))
 		        throw new ArgumentException($"{name} is not a valid attribute name");
