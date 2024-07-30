@@ -8,7 +8,7 @@ namespace AsciiDocNet
     /// <seealso cref="AsciiDocNet.IElement" />
     /// <seealso cref="AsciiDocNet.IAttributable" />
     public abstract class Media : IElement, IAttributable
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="Media"/> class.
         /// </summary>
@@ -16,14 +16,14 @@ namespace AsciiDocNet
         /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentException">must specify a path</exception>
         protected Media(string path)
-		{
-		    if (path == null)
-		        throw new ArgumentNullException(nameof(path));
-		    if (path.Length == 0)
-		        throw new ArgumentException("must specify a path", nameof(path));
+        {
+            if (path == null)
+                throw new ArgumentNullException(nameof(path));
+            if (path.Length == 0)
+                throw new ArgumentException("must specify a path", nameof(path));
 
-		    Path = path;
-		}
+            Path = path;
+        }
 
         /// <summary>
         /// Gets or sets the align.
@@ -114,6 +114,11 @@ namespace AsciiDocNet
         public int? Width { get; private set; }
 
         /// <summary>
+        /// Gets or sets the caption.
+        /// </summary>
+        public string? Caption { get; set; }
+
+        /// <summary>
         /// Implements the operator ==.
         /// </summary>
         /// <param name="left">The left.</param>
@@ -142,10 +147,10 @@ namespace AsciiDocNet
         /// The visitor
         /// </returns>
         public virtual TVisitor Accept<TVisitor>(TVisitor visitor) where TVisitor : IDocumentVisitor
-		{
-			visitor.VisitMedia(this);
-			return visitor;
-		}
+        {
+            visitor.VisitMedia(this);
+            return visitor;
+        }
 
         /// <summary>
         /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
@@ -155,21 +160,21 @@ namespace AsciiDocNet
         ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         public override bool Equals(object obj)
-		{
-			if (ReferenceEquals(null, obj))
-			{
-				return false;
-			}
-			if (ReferenceEquals(this, obj))
-			{
-				return true;
-			}
-			if (obj.GetType() != this.GetType())
-			{
-				return false;
-			}
-			return Equals((Media)obj);
-		}
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((Media)obj);
+        }
 
         /// <summary>
         /// Returns a hash code for this instance.
@@ -178,22 +183,22 @@ namespace AsciiDocNet
         /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
         /// </returns>
         public override int GetHashCode()
-		{
-			unchecked
-			{
-				var hashCode = Align?.GetHashCode() ?? 0;
-				hashCode = (hashCode * 397) ^ (AlternateText?.GetHashCode() ?? 0);
-				hashCode = (hashCode * 397) ^ (Attributes?.GetHashCode() ?? 0);
-				hashCode = (hashCode * 397) ^ (Float?.GetHashCode() ?? 0);
-				hashCode = (hashCode * 397) ^ Height.GetHashCode();
-				hashCode = (hashCode * 397) ^ (Link?.GetHashCode() ?? 0);
-				hashCode = (hashCode * 397) ^ (Path?.GetHashCode() ?? 0);
-				hashCode = (hashCode * 397) ^ (Role?.GetHashCode() ?? 0);
-				hashCode = (hashCode * 397) ^ (Title?.GetHashCode() ?? 0);
-				hashCode = (hashCode * 397) ^ Width.GetHashCode();
-				return hashCode;
-			}
-		}
+        {
+            unchecked
+            {
+                var hashCode = Align?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ (AlternateText?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Attributes?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Float?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ Height.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Link?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Path?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Role?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Title?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ Width.GetHashCode();
+                return hashCode;
+            }
+        }
 
         /// <summary>
         /// Sets the height of the width and.
@@ -201,10 +206,10 @@ namespace AsciiDocNet
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>
         public void SetWidthAndHeight(int width, int height)
-		{
-			Width = width;
-			Height = height;
-		}
+        {
+            Width = width;
+            Height = height;
+        }
 
         /// <summary>
         /// Determines whether the specified <see cref="Media" />, is equal to this instance.
@@ -213,14 +218,14 @@ namespace AsciiDocNet
         /// <returns>true if equal; otherwise, false</returns>
         protected bool Equals(Media other) => 
             string.Equals(Align, other.Align) &&
-		    string.Equals(AlternateText, other.AlternateText) &&
-		    Equals(Attributes, other.Attributes) &&
-		    string.Equals(Float, other.Float) &&
-		    Height == other.Height &&
-		    Width == other.Width &&
-		    string.Equals(Link, other.Link) &&
-		    string.Equals(Path, other.Path) &&
-		    string.Equals(Role, other.Role) &&
-		    string.Equals(Title, other.Title);
-	}
+            string.Equals(AlternateText, other.AlternateText) &&
+            Equals(Attributes, other.Attributes) &&
+            string.Equals(Float, other.Float) &&
+            Height == other.Height &&
+            Width == other.Width &&
+            string.Equals(Link, other.Link) &&
+            string.Equals(Path, other.Path) &&
+            string.Equals(Role, other.Role) &&
+            string.Equals(Title, other.Title);
+    }
 }
