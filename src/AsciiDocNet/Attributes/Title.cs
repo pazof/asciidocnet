@@ -23,11 +23,6 @@ namespace AsciiDocNet.Attributes
 			Text = text;
 		}
 
-		public static implicit operator Title(string title)
-		{
-			return new Title(title);
-		}
-
 		/// <summary>
 		/// Gets or sets the text.
 		/// </summary>
