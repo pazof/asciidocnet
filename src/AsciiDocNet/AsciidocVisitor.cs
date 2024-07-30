@@ -571,20 +571,38 @@ namespace AsciiDocNet
 			}
 		}
 
-        /// <summary>
-        /// Visits the link.
-        /// </summary>
-        /// <param name="link">The link.</param>
-        public virtual void VisitLink(Link link)
+
+        class DumyContainer : InlineContainer
+        {
+	        public DumyContainer(IEnumerable<IInlineElement> inlineContainer)
+	        {
+		        Elements = inlineContainer.ToList();
+	        }
+
+	        public override InlineElementType ContainElementType { get; } = InlineElementType.All;
+	        public override TVisitor Accept<TVisitor>(TVisitor visitor)
+	        {
+		        throw new NotImplementedException();
+	        }
+        }
+
+		/// <summary>
+		/// Visits the link.
+		/// </summary>
+		/// <param name="link">The link.</param>
+		public virtual void VisitLink(Link link)
 		{
 		    if (link == null) return;
-			if (link.Text == null)
+			if (link.Elements == null)
 			{
 				_writer.Write("{0}", link.Href);
 			}
 			else
 			{
-				_writer.Write("{0}[{1}]", link.Href, link.Text);
+				_writer.Write("{0}[", link.Href);
+
+				VisitInlineContainer(new DumyContainer(link.Elements));
+				_writer.Write("]");
 			}	    
 		}
 
@@ -626,10 +644,10 @@ namespace AsciiDocNet
 		}
 
         /// <summary>
-        /// Visits the image.
-        /// </summary>
-        /// <param name="image">The image.</param>
-        public virtual void VisitImage(Image image) => VisitMedia(image, "image");
+		/// Visits the image.
+		/// </summary>
+		/// <param name="image">The image.</param>
+		public virtual void VisitImage(Image image) => VisitMedia(image, "image");
 
         /// <summary>
         /// Visits the video.
@@ -996,6 +1014,10 @@ namespace AsciiDocNet
 			if (!string.IsNullOrEmpty(media.Role))
 			{
 				attributes.Append($"role=\"{media.Role}\",");
+			}
+			if (!string.IsNullOrEmpty(media.Caption))
+			{
+				attributes.Append($"caption=\"{media.Caption}\",");
 			}
 
 			_writer.WriteLine("{0}::{1}[{2}]", name, media.Path, attributes.ToString(0, Math.Max(0, attributes.Length - 1)));
