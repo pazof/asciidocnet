@@ -307,7 +307,7 @@ namespace AsciiDocNet
         /// <param name="link">The link.</param>
         public virtual void VisitLink(Link link)
         {
-            _writer.Write("<a href=\"{0}\">{1}</a>", link.Href, link.Text);
+            _writer.Write("<a href=\"{0}\">{1}</a>", link.Href, link.Elements);
         }
 
         /// <summary>

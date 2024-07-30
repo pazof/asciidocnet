@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace AsciiDocNet.Tests.Unit
@@ -49,7 +50,8 @@ namespace AsciiDocNet.Tests.Unit
 			var link = (Link)paragraph[index];
 
 			Assert.Equal($"{protocol}://example.com", link.Href);
-			Assert.Equal(linkText, link.Text);
+			var resultText = (link.Elements.First() as TextLiteral).Text;
+			Assert.Equal(linkText, resultText);
 
 			AsciiDocAssert.Equal(asciidoc, document);
 		}

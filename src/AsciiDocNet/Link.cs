@@ -21,16 +21,25 @@ namespace AsciiDocNet
         public Link(string href, string text)
 		{
 			Href = href;
-			Text = text;
+			Elements = new List<IInlineElement>()
+			{
+				new TextLiteral(text)
+			};
 		}
 
-        /// <summary>
-        /// Gets the attributes.
-        /// </summary>
-        /// <value>
-        /// The attributes.
-        /// </value>
-        public AttributeList Attributes { get; } = new AttributeList();
+        public Link(string href, IEnumerable<IInlineElement> elements)
+        {
+	        Href = href;
+	        Elements = elements.ToList();
+        }
+
+		/// <summary>
+		/// Gets the attributes.
+		/// </summary>
+		/// <value>
+		/// The attributes.
+		/// </value>
+		public AttributeList Attributes { get; } = new AttributeList();
 
         /// <summary>
         /// Gets or sets the href.
@@ -41,12 +50,12 @@ namespace AsciiDocNet
         public string Href { get; set; }
 
         /// <summary>
-        /// Gets or sets the text.
+        /// Gets or sets the content of the link to show.
         /// </summary>
         /// <value>
         /// The text.
         /// </value>
-        public string Text { get; set; }
+        public IList<IInlineElement> Elements { get; set; }
 
         /// <summary>
         /// Implements the operator ==.
@@ -97,7 +106,7 @@ namespace AsciiDocNet
 			{
 				var hashCode = Attributes.GetHashCode();
 				hashCode = (hashCode * 397) ^ (Href?.GetHashCode() ?? 0);
-				hashCode = (hashCode * 397) ^ (Text?.GetHashCode() ?? 0);
+				hashCode = (hashCode * 397) ^ (Elements?.GetHashCode() ?? 0);
 				return hashCode;
 			}
 		}
@@ -124,6 +133,6 @@ namespace AsciiDocNet
         protected bool Equals(Link other) => 
             Equals(Attributes, other.Attributes) && 
             string.Equals(Href, other.Href) && 
-            string.Equals(Text, other.Text);
+            string.Equals(Elements, other.Elements);
 	}
 }
