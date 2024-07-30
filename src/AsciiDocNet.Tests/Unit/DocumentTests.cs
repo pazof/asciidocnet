@@ -72,7 +72,7 @@ namespace AsciiDocNet.Tests.Unit
 
 				    DownloadAsciiDocFiles(document);
 
-                    testFiles = Directory.EnumerateFiles(RelativePathDocs, "*.asciidoc", SearchOption.AllDirectories);
+                    testFiles = Directory.EnumerateFiles(RelativePathDocs, "*.asciidoc", SearchOption.AllDirectories).ToList();
                 }
 
 				return testFiles.Select(testFile => new object[] { new FileInfo(testFile) });
