@@ -592,18 +592,19 @@ namespace AsciiDocNet
 		/// <param name="link">The link.</param>
 		public virtual void VisitLink(Link link)
 		{
-		    if (link == null) return;
-			if (link.Elements == null)
-			{
-				_writer.Write("{0}", link.Href);
-			}
-			else
+			if (link == null) return;
+
+			if (link.Elements.Count > 0)
 			{
 				_writer.Write("{0}[", link.Href);
 
 				VisitInlineContainer(new DumyContainer(link.Elements));
 				_writer.Write("]");
-			}	    
+			}
+			else
+			{
+				_writer.Write("{0}", link.Href);
+			}
 		}
 
         /// <summary>

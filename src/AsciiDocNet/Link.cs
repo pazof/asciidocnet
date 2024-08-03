@@ -27,10 +27,10 @@ namespace AsciiDocNet
 			};
 		}
 
-        public Link(string href, IEnumerable<IInlineElement> elements)
+        public Link(string href, IEnumerable<IInlineElement>? elements = null)
         {
 	        Href = href;
-	        Elements = elements.ToList();
+	        Elements = elements?.ToList() ?? new List<IInlineElement>();
         }
 
 		/// <summary>
